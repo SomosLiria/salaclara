@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SalaClara · Pantalla de turnos y aviso al móvil para clínicas y centros médicos</title>
+  <meta name="description" content="SalaClara muestra en la pantalla de la sala y en el móvil del paciente a quién se llama, adónde ir y un intervalo de espera que se actualiza solo, con preaviso unos 20 minutos antes. Piloto gratuito para clínicas.">
+  <link rel="canonical" href="https://somosliria.github.io/salaclara/">
+  <meta name="theme-color" content="#14171b">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="SalaClara">
+  <meta property="og:title" content="SalaClara · Que cada paciente sepa cuánto le queda">
+  <meta property="og:description" content="Pantalla de sala y aviso al móvil con tiempo de espera actualizado y preaviso de unos 20 minutos. Piloto gratuito para clínicas y centros médicos.">
+  <meta property="og:url" content="https://somosliria.github.io/salaclara/">
+  <meta property="og:image" content="https://somosliria.github.io/salaclara/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Tablero de turnos de SalaClara con códigos y tiempos de espera">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/icon-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <link rel="preload" href="fonts/barlow-condensed-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/atkinson-hyperlegible-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://somosliria.github.io/salaclara/#organizacion",
+        "name": "SalaClara",
+        "url": "https://somosliria.github.io/salaclara/",
+        "email": "hola@liriacrea.com",
+        "logo": "https://somosliria.github.io/salaclara/assets/icon-512.png"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "SalaClara",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "url": "https://somosliria.github.io/salaclara/",
+        "inLanguage": "es",
+        "description": "Pantalla de turnos para la sala de espera y aviso al móvil del paciente con intervalo de espera actualizado y preaviso configurable de unos 20 minutos, para clínicas, centros médicos y negocios con cita.",
+        "featureList": [
+          "Pantalla de sala con turnos llamados y espera orientativa",
+          "Acceso del paciente con QR común, número de turno y PIN",
+          "Preaviso configurable (unos 20 minutos)",
+          "Panel para recepción y profesionales",
+          "Importación de la agenda y conectores",
+          "Métricas de acierto de las estimaciones"
+        ],
+        "publisher": { "@id": "https://somosliria.github.io/salaclara/#organizacion" }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "¿Hay que instalar algo en los ordenadores de la clínica?", "acceptedAnswer": { "@type": "Answer", "text": "No. El panel se usa desde el navegador y la pantalla de la sala es una página web que se abre en el televisor o en un pequeño reproductor HDMI." } },
+          { "@type": "Question", "name": "¿Qué ve la gente en la pantalla de la sala?", "acceptedAnswer": { "@type": "Answer", "text": "Solo el código del turno, el destino al que debe ir y una espera orientativa. Nunca nombres, teléfonos ni datos clínicos." } },
+          { "@type": "Question", "name": "¿Y si el paciente no tiene móvil?", "acceptedAnswer": { "@type": "Answer", "text": "Sigue su turno en la pantalla de la sala. El móvil es opcional y el personal mantiene su forma habitual de llamar." } },
+          { "@type": "Question", "name": "¿Se conecta con nuestro programa de citas?", "acceptedAnswer": { "@type": "Answer", "text": "Desde el primer día se puede importar la agenda en CSV. Para evitar cualquier doble registro, SalaClara recibe las señales de llegada, llamada, inicio y fin desde su programa cuando este lo permite." } },
+          { "@type": "Question", "name": "¿El preaviso de 20 minutos garantiza la hora de atención?", "acceptedAnswer": { "@type": "Answer", "text": "No. Es un aviso orientativo para que el paciente se prepare; la llamada definitiva llega cuando el profesional está listo. El umbral se configura por centro." } },
+          { "@type": "Question", "name": "¿Cuánto cuesta?", "acceptedAnswer": { "@type": "Answer", "text": "El piloto es gratuito. Después, una cuota mensual por centro que se acuerda según el tamaño y las integraciones necesarias." } }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="SalaClara, inicio">
+      <span class="brand-mark" aria-hidden="true">SC</span>
+      <span class="brand-name">SalaClara</span>
+    </a>
+    <nav aria-label="Principal">
+      <ul class="nav">
+        <li><a href="#recorrido">Cómo funciona</a></li>
+        <li><a href="#equipo">Para el personal</a></li>
+        <li><a href="#integracion">Integración</a></li>
+        <li><a href="#preguntas">Preguntas</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-amber nav-cta" href="#piloto">Pedir piloto</a>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" aria-labelledby="titulo">
+      <div class="hero-copy">
+        <h1 id="titulo">Que cada paciente sepa cuánto le queda.</h1>
+        <p class="lead">SalaClara muestra en la pantalla de la sala y en el móvil del paciente a quién se llama, adónde ir y un <strong>intervalo de espera que se actualiza solo</strong>. Y le avisa unos 20 minutos antes de su turno.</p>
+        <form class="quick-form" data-pilot-form data-api="" novalidate>
+          <p class="form-title">Pruébelo gratis en su centro</p>
+          <div class="quick-fields">
+            <label class="field"><span>Nombre del centro</span><input name="centerName" required minlength="2" maxlength="120" autocomplete="organization"></label>
+            <label class="field"><span>Correo de contacto</span><input name="email" type="email" required maxlength="160" autocomplete="email"></label>
+          </div>
+          <input type="hidden" name="contactName" value="">
+          <label class="hp" aria-hidden="true">Web <input name="website" tabindex="-1" autocomplete="off"></label>
+          <label class="consent"><input type="checkbox" name="consent" required> Acepto que me contacten sobre el piloto según la <a href="privacidad.html">política de privacidad</a>.</label>
+          <button class="btn btn-amber btn-large" type="submit">Pedir piloto gratuito</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+        <ul class="assurances">
+          <li>Sin instalar nada: funciona en el navegador</li>
+          <li>Sin datos personales en la pantalla</li>
+          <li>Piloto de 6-8 semanas con resultados medidos</li>
+        </ul>
+      </div>
+      <div class="hero-board" data-board aria-hidden="true">
+        <div class="board-fallback">
+          <div class="bf-head"><span>Turno</span><span>Vaya a</span><span>Espera</span></div>
+          <div class="bf-row bf-called"><span class="flap">D-014</span><span class="flap">Gabinete 2</span><span class="flap">Ahora</span></div>
+          <div class="bf-row"><span class="flap">H-006</span><span class="flap">—</span><span class="flap">10–20 min</span></div>
+          <div class="bf-row"><span class="flap">D-015</span><span class="flap">—</span><span class="flap">15–30 min</span></div>
+          <div class="bf-row"><span class="flap">M-021</span><span class="flap">—</span><span class="flap">25–40 min</span></div>
+          <div class="bf-row"><span class="flap">D-016</span><span class="flap">—</span><span class="flap">40 min – 1 h</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="problem" aria-labelledby="problema">
+      <h2 id="problema">La espera no se hace larga por los minutos. Se hace larga por no saber.</h2>
+      <p>Salas llenas, gente de pie, la misma pregunta en recepción cada diez minutos y pacientes que no oyen su nombre. SalaClara no acelera la consulta: hace que la espera sea <strong>informada</strong>, para que el paciente se organice y el personal trabaje sin interrupciones.</p>
+    </section>
+
+    <section id="recorrido" class="journey" aria-labelledby="recorrido-titulo">
+      <h2 id="recorrido-titulo">El recorrido de un paciente, en el tablero</h2>
+      <ol class="departures">
+        <li><span class="dep-time">09:02</span><span class="dep-what"><strong>Llega y escanea el QR de la sala.</strong> Escribe su turno y ve su espera. Con el PIN de su tique, activa los avisos.</span><span class="dep-state flap">D-015</span></li>
+        <li><span class="dep-time">09:03</span><span class="dep-what"><strong>Ve un intervalo, no una promesa.</strong> «35–50 min · hacia las 09:40–09:55». Se recalcula con cada llamada, pausa o consulta que se alarga.</span><span class="dep-state flap">35–50 min</span></li>
+        <li><span class="dep-time">09:31</span><span class="dep-what"><strong>Preaviso unos 20 minutos antes.</strong> Le da tiempo a volver si el centro le permite esperar fuera. Confirma con un toque.</span><span class="dep-state flap amber">Preaviso</span></li>
+        <li><span class="dep-time">09:47</span><span class="dep-what"><strong>Llamada en la pantalla y en el móvil.</strong> Código y destino, con un aviso sonoro moderado y su equivalente visual.</span><span class="dep-state flap">Gabinete 1</span></li>
+      </ol>
+      <p class="note">Ejemplo ilustrativo. Los tiempos son orientativos y dependen de cada centro.</p>
+    </section>
+
+    <section id="equipo" class="staff" aria-labelledby="equipo-titulo">
+      <div class="staff-copy">
+        <h2 id="equipo-titulo">Para recepción y profesionales: un toque por paciente</h2>
+        <ul class="ticks">
+          <li><strong>Llamar, iniciar, terminar</strong> desde el panel, con la acción principal siempre a la vista.</li>
+          <li><strong>Turno con PIN y tique impreso</strong> al dar la vez; el paciente sin móvil sigue la pantalla.</li>
+          <li><strong>Avisos que no llegan, a la vista</strong>: el personal aplica su protocolo; nadie sale de la cola por un aviso fallido.</li>
+          <li><strong>El personal manda</strong>: reordenar exige motivo y queda registrado; el sistema nunca cancela a nadie.</li>
+        </ul>
+      </div>
+      <figure class="shot">
+        <img src="assets/panel.jpg" width="1440" height="900" loading="lazy" decoding="async" alt="Panel de SalaClara con la cola de pacientes, estados, espera estimada y botones Llamar y Terminar">
+        <figcaption>Panel real con datos de demostración.</figcaption>
+      </figure>
+    </section>
+
+    <section class="screens" aria-labelledby="pantallas-titulo">
+      <h2 id="pantallas-titulo">Lo que ve la sala, lo que ve el móvil</h2>
+      <div class="screens-grid">
+        <figure class="shot shot-wide">
+          <img src="assets/pantalla.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="Pantalla de sala de SalaClara con próximos turnos, intervalos de espera y código QR para seguir el turno en el móvil">
+          <figcaption>Pantalla de sala, legible a varios metros, en 1080p o 4K.</figcaption>
+        </figure>
+        <figure class="shot shot-phone">
+          <img src="assets/movil.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Móvil del paciente con su turno, espera de 1 h 15 a 2 h 15 y hora aproximada de atención">
+          <figcaption>Móvil del paciente.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="honest" aria-labelledby="honesto-titulo">
+      <h2 id="honesto-titulo">Honesto por diseño</h2>
+      <dl class="principles">
+        <div><dt>Intervalos, no cuentas atrás</dt><dd>Se calculan con la duración real de las consultas, dando más peso al ritmo de hoy, y se mide su acierto.</dd></div>
+        <div><dt>Si faltan datos, lo dice</dt><dd>Si se corta la conexión, la pantalla lo indica y deja de prometer tiempos. Nadie desaparece de la cola.</dd></div>
+        <div><dt>La pantalla no sabe nombres</dt><dd>Solo recibe código, destino y espera. Lo personal nunca viaja a la sala.</dd></div>
+        <div><dt>Sin decisiones clínicas</dt><dd>Informa y avisa. El orden de atención lo decide el personal.</dd></div>
+      </dl>
+    </section>
+
+    <section id="integracion" class="integration" aria-labelledby="integracion-titulo">
+      <h2 id="integracion-titulo">Sin doble registro</h2>
+      <p>El paciente se registra donde siempre. SalaClara solo necesita saber cuándo llega, cuándo se le llama, cuándo empieza y cuándo termina su atención.</p>
+      <table class="levels">
+        <caption class="visually-hidden">Formas de conectar SalaClara</caption>
+        <thead><tr><th scope="col">Cómo se conecta</th><th scope="col">Para quién</th><th scope="col">Trabajo extra del personal</th></tr></thead>
+        <tbody>
+          <tr><td>Conector con su programa de citas o sistema del hospital</td><td>Centros cuyo programa lo permite</td><td>Ninguno</td></tr>
+          <tr><td>Importación de la agenda del día (CSV)</td><td>Casi cualquier clínica, desde el primer día</td><td>Un toque: «Registrar llegada»</td></tr>
+          <tr><td>El panel como sistema de turnos</td><td>Centros sin programa o con dispensador de números</td><td>Sustituye al papel, no lo duplica</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="audience" aria-labelledby="quien-titulo">
+      <h2 id="quien-titulo">Para quién</h2>
+      <ul class="audience-list">
+        <li><strong>Clínicas dentales</strong>, con gabinetes, sillones y tratamientos de duración variable.</li>
+        <li><strong>Centros médicos y policlínicas</strong>, con varias consultas y especialidades.</li>
+        <li><strong>Hospitales privados</strong>, por servicio: consultas externas, diagnóstico por imagen, extracciones.</li>
+        <li><strong>Cualquier negocio con cita</strong> donde la gente espera sin saber cuánto.</li>
+      </ul>
+    </section>
+
+    <section id="piloto" class="pilot" aria-labelledby="piloto-titulo">
+      <div class="pilot-copy">
+        <h2 id="piloto-titulo">Piloto gratuito de 6 a 8 semanas</h2>
+        <ol class="pilot-steps">
+          <li>Medimos dos semanas cómo es hoy la espera.</li>
+          <li>Instalamos la pantalla y el panel en un circuito y formamos al personal.</li>
+          <li>Medimos de nuevo: preguntas en recepción, llamadas perdidas y acierto de las estimaciones.</li>
+          <li>Con los resultados en la mano, usted decide.</li>
+        </ol>
+        <p class="contact">¿Prefiere escribirnos? <a href="mailto:hola@liriacrea.com">hola@liriacrea.com</a></p>
+      </div>
+      <form class="full-form" data-pilot-form data-api="" novalidate>
+        <div class="form-grid">
+          <label class="field"><span>Nombre del centro</span><input name="centerName" required minlength="2" maxlength="120" autocomplete="organization"></label>
+          <label class="field"><span>Su nombre</span><input name="contactName" required minlength="2" maxlength="120" autocomplete="name"></label>
+          <label class="field"><span>Cargo</span><input name="role" maxlength="80" autocomplete="organization-title" placeholder="Dirección, gerencia, recepción…"></label>
+          <label class="field"><span>Correo</span><input name="email" type="email" required maxlength="160" autocomplete="email"></label>
+          <label class="field"><span>Teléfono (opcional)</span><input name="phone" type="tel" maxlength="40" autocomplete="tel"></label>
+          <label class="field"><span>Tipo de centro</span>
+            <select name="centerType">
+              <option value="">Elija una opción</option>
+              <option>Clínica dental</option><option>Centro médico o policlínica</option><option>Hospital privado</option><option>Fisioterapia o rehabilitación</option><option>Otro negocio con cita</option>
+            </select>
+          </label>
+          <label class="field"><span>Pacientes al día (aprox.)</span>
+            <select name="dailyPatients">
+              <option value="">Elija una opción</option>
+              <option>Menos de 50</option><option>50-150</option><option>150-400</option><option>Más de 400</option>
+            </select>
+          </label>
+          <label class="field field-wide"><span>¿Qué le gustaría mejorar? (opcional)</span><textarea name="message" maxlength="2000" rows="3"></textarea></label>
+        </div>
+        <label class="hp" aria-hidden="true">Web <input name="website" tabindex="-1" autocomplete="off"></label>
+        <label class="consent"><input type="checkbox" name="consent" required> Acepto que me contacten sobre el piloto según la <a href="privacidad.html">política de privacidad</a>.</label>
+        <button class="btn btn-amber btn-large" type="submit">Solicitar piloto</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section id="preguntas" class="faq" aria-labelledby="preguntas-titulo">
+      <h2 id="preguntas-titulo">Preguntas frecuentes</h2>
+      <details><summary>¿Hay que instalar algo en los ordenadores de la clínica?</summary><p>No. El panel se usa desde el navegador y la pantalla de la sala es una página web que se abre en el televisor o en un pequeño reproductor HDMI. Antes de empezar probamos su televisor; si no sirve, le proponemos un reproductor económico.</p></details>
+      <details><summary>¿Qué ve la gente en la pantalla de la sala?</summary><p>Solo el código del turno, el destino al que debe ir y una espera orientativa. Nunca nombres, teléfonos ni datos clínicos. En urgencias, solo una referencia por servicio, sin posiciones.</p></details>
+      <details><summary>¿Cómo accede el paciente desde su móvil?</summary><p>Escanea el QR de la sala y escribe su número de turno para consultar la espera. Con el PIN de 4 cifras de su tique recibe además los avisos. Sin cuentas, sin descargar aplicaciones.</p></details>
+      <details><summary>¿Y si el paciente no tiene móvil?</summary><p>Sigue su turno en la pantalla de la sala, como siempre. El móvil es opcional y el personal conserva su forma habitual de llamar.</p></details>
+      <details><summary>¿Se conecta con nuestro programa de citas?</summary><p>Desde el primer día se puede importar la agenda en CSV. Si su programa permite enviar las señales de llegada, llamada, inicio y fin, la conexión evita cualquier doble registro.</p></details>
+      <details><summary>¿El preaviso garantiza la hora de atención?</summary><p>No. Es un aviso orientativo para que el paciente se prepare; la llamada definitiva llega cuando el profesional está listo. El umbral, unos 20 minutos por defecto, se configura por centro.</p></details>
+      <details><summary>¿Y la protección de datos?</summary><p>SalaClara funciona con el mínimo de datos: la pantalla no recibe ninguno personal y el móvil del paciente no necesita cuenta. Antes de trabajar con datos reales se firma el contrato de encargado del tratamiento y se revisa con su centro qué información se usa.</p></details>
+      <details><summary>¿Cuánto cuesta?</summary><p>El piloto es gratuito. Después, una cuota mensual por centro que se acuerda según el tamaño y las integraciones.</p></details>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-brand"><span class="brand-mark" aria-hidden="true">SC</span> SalaClara</div>
+    <nav aria-label="Pie de página">
+      <ul>
+        <li><a href="ficha/">Ficha comercial</a></li>
+        <li><a href="privacidad.html">Privacidad</a></li>
+        <li><a href="aviso-legal.html">Aviso legal</a></li>
+        <li><a href="mailto:hola@liriacrea.com">hola@liriacrea.com</a></li>
+      </ul>
+    </nav>
+    <p class="footer-note">SalaClara es una herramienta de información de la espera; no toma decisiones clínicas. © 2026 Liria Crea.</p>
+  </footer>
+  <script type="module" src="assets/site.js"></script>
+</body>
+</html>

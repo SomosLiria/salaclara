@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ficha comercial · SalaClara</title>
+  <meta name="description" content="SalaClara en una página: qué resuelve, cómo funciona, cómo se integra y en qué consiste el piloto gratuito.">
+  <link rel="canonical" href="https://somosliria.github.io/salaclara/ficha/">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/site.css">
+  <style>
+    @page { size: A4; margin: 12mm; }
+    body { background: white; }
+    .sheet { max-width: 52rem; margin: 0 auto; padding: 2rem var(--gutter) 3rem; }
+    .sheet-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; border-bottom: 4px solid var(--board); padding-bottom: 0.8rem; margin-bottom: 1.4rem; }
+    .sheet-head h1 { font-size: clamp(2.2rem, 5vw, 3rem); }
+    .sheet-head p { margin: 0; color: var(--ink-muted); font-weight: 700; }
+    .claim { font-family: var(--font-board); font-weight: 700; text-transform: uppercase; font-size: 1.7rem; line-height: 1.05; margin-bottom: 1rem; }
+    .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem 2rem; }
+    .cols h2 { font-size: 1.25rem; margin: 0 0 0.4rem; }
+    .cols ul { margin: 0 0 0.8rem; padding-left: 1.1rem; color: var(--ink-muted); }
+    .cols li { margin-bottom: 0.25rem; }
+    .print { margin-top: 1.5rem; }
+    .sheet-foot { margin-top: 1.5rem; border-top: 1px solid var(--rule); padding-top: 0.8rem; font-size: 0.9rem; color: var(--ink-muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+    @media (max-width: 640px) { .cols { grid-template-columns: 1fr; } }
+    @media print { .print, .back { display: none; } .sheet { padding: 0; } body { font-size: 10.5pt; } }
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <p class="back"><a href="../">← Volver a la web</a></p>
+    <div class="sheet-head">
+      <h1><span class="brand-mark" aria-hidden="true">SC</span> SalaClara</h1>
+      <p>Información de la espera para centros con cita</p>
+    </div>
+    <p class="claim">Que cada paciente sepa cuánto le queda, en la pantalla de la sala y en su móvil.</p>
+    <div class="cols">
+      <section>
+        <h2>El problema</h2>
+        <ul>
+          <li>Salas llenas y pacientes de pie sin saber cuánto falta.</li>
+          <li>Preguntas constantes en recepción sobre el retraso.</li>
+          <li>Llamadas perdidas de quien no oye su nombre.</li>
+        </ul>
+        <h2>Qué hace</h2>
+        <ul>
+          <li>Pantalla de sala: turno llamado, destino y espera orientativa.</li>
+          <li>Móvil sin descargar nada: QR de la sala + turno; con el PIN del tique, avisos.</li>
+          <li>Preaviso configurable (unos 20 min) y llamada definitiva.</li>
+          <li>Panel para recepción y profesionales: una acción principal por paciente.</li>
+          <li>Tique impreso para quien no usa el móvil.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Cómo se integra</h2>
+        <ul>
+          <li>Hoy: importación de la agenda del día (CSV) y panel.</li>
+          <li>Conector con su programa de citas para eliminar el doble registro, cuando el programa lo permite.</li>
+          <li>Sin instalar nada: navegador y TV o reproductor HDMI.</li>
+        </ul>
+        <h2>Principios</h2>
+        <ul>
+          <li>Intervalos medidos, no promesas; si faltan datos, lo dice.</li>
+          <li>Ningún dato personal en la pantalla.</li>
+          <li>Sin decisiones clínicas: el personal manda.</li>
+        </ul>
+        <h2>Piloto gratuito (6-8 semanas)</h2>
+        <ul>
+          <li>Medición previa de la espera.</li>
+          <li>Instalación en un circuito y formación.</li>
+          <li>Medición posterior: preguntas en recepción, llamadas perdidas, acierto de las estimaciones.</li>
+        </ul>
+      </section>
+    </div>
+    <div class="sheet-foot">
+      <span>hola@liriacrea.com</span>
+      <span>somosliria.github.io/salaclara</span>
+    </div>
+    <p class="print"><button class="btn btn-amber" type="button" data-print>Imprimir o guardar en PDF</button></p>
+  </main>
+  <script type="module" src="../assets/print.js"></script>
+</body>
+</html>
